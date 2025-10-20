@@ -29,7 +29,7 @@ export const codeAgentFunction = inngest.createFunction(
   { event: "code-agent/run" },
   async ({ event, step }) => {
     const sandboxId = await step.run("get-sandbox-id", async () => {
-      const sandbox = await Sandbox.create("vibe-nextjs-test-01");
+      const sandbox = await Sandbox.create("vibe-nextjs-test-ai");
       await sandbox.setTimeout(SANDBOX_TIMEOUT);
       return sandbox.sandboxId;
     });
@@ -74,7 +74,7 @@ export const codeAgentFunction = inngest.createFunction(
       description: "An expert coding agent",
       system: PROMPT,
       model: openai({
-        model: "gpt-4.1", // change model ai agent vd: authropic, xAI, gemini google
+        model: "gpt-4.1-mini", // change model ai agent vd: authropic, xAI, gemini google
         defaultParameters: {
           temperature: 0.1,
         },
@@ -205,7 +205,7 @@ export const codeAgentFunction = inngest.createFunction(
       description: "A fragment title generator",
       system: FRAGMENT_TITLE_PROMPT,
       model: openai({
-        model: "gpt-4o", // change model ai agent vd: authropic, xAI, gemini google
+        model: "gpt-4.1", // change model ai agent vd: authropic, xAI, gemini google
       }),
     });
 
@@ -214,7 +214,7 @@ export const codeAgentFunction = inngest.createFunction(
       description: "A response generator",
       system: RESPONSE_PROMPT,
       model: openai({
-        model: "gpt-4o", // change model ai agent vd: authropic, xAI, gemini google
+        model: "gpt-4.1", // change model ai agent vd: authropic, xAI, gemini google
       }),
     });
 
